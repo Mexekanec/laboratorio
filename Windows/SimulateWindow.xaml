@@ -1,0 +1,51 @@
+﻿<Window x:Class="Laboratorio.Windows.SimulateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratorio.Windows"
+        mc:Ignorable="d"
+        Title="SimulateWindow" Height="720" Width="1080" Background="#FF171717">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="370*"/>
+            <RowDefinition Height="234*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="520*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer x:Name="TableScrollViewer" Grid.Column="1"  Grid.RowSpan="3" 
+                            HorizontalScrollBarVisibility="Hidden"
+              VerticalScrollBarVisibility="Hidden"
+              PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+              PreviewMouseDown="DesignCanvas_PreviewMouseDown"
+              PreviewMouseMove="DesignCanvas_PreviewMouseMove"
+              PreviewMouseUp="DesignCanvas_PreviewMouseUp" Margin="0,65,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                      >
+            <Grid x:Name="ZoomContainer">
+                <Grid.RenderTransform>
+                    <ScaleTransform x:Name="ZoomTransform" ScaleX="1" ScaleY="1" />
+                </Grid.RenderTransform>
+                <Canvas x:Name="Table"
+                   Width="3500" Height="3500"
+                   Background="#FF171717"
+                   IsManipulationEnabled="True">
+                    <Rectangle Height="3400" Canvas.Left="50" Canvas.Top="50" Width="3400" RadiusY="20" RadiusX="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="#FFE3E3E3" Opacity="0.5"/>
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                </Canvas>
+            </Grid>
+        </ScrollViewer>
+        <ToolBar Height="65" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="-3,0,0,0"/>
+        <ScrollViewer Grid.Row="1"  Background="#FF222222" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" >
+            <Button x:Name="resistor_Копировать"  Content="Резистор" Height="42" Width="126"/>
+        </ScrollViewer>
+        <Label x:Name="StatusLabel" Content="Label" HorizontalAlignment="Left" Height="35" Margin="57,53,0,0" Grid.Row="2" VerticalAlignment="Top" Width="113" Foreground="White"/>
+    </Grid>
+</Window>
